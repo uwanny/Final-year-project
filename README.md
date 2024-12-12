@@ -4,4 +4,4 @@ Final year project code for crystal orientation determination through deep learn
 
 ## Article
 
-The Thesis could be found in the following link: [Thesis](files/Final_YearProject_Report.pdf)
+The Thesis could be found in the following link: [Thesis](files/Final_Year_Individual_Project.pdf)
