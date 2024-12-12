@@ -1,0 +1,41 @@
+layers = [
+    imageInputLayer(inputSize)
+
+    convolution2dLayer(5,20)
+    batchNormalizationLayer
+    reluLayer
+    %maxPooling2dLayer(2,'Stride',2)
+
+    convolution2dLayer(5,40)
+    batchNormalizationLayer
+    reluLayer
+    %maxPooling2dLayer(2,'Stride',2)
+
+    convolution2dLayer(5,80)
+    batchNormalizationLayer
+    reluLayer
+    %maxPooling2dLayer(2,'Stride',2)
+    
+    convolution2dLayer(3,20)
+    batchNormalizationLayer
+    reluLayer
+    %maxPooling2dLayer(2,'Stride',2)
+
+    convolution2dLayer(3,40)
+    batchNormalizationLayer
+    reluLayer
+    %maxPooling2dLayer(2,'Stride',2)
+
+    convolution2dLayer(3,80)
+    batchNormalizationLayer
+    reluLayer
+    maxPooling2dLayer(2,'Stride',2)
+
+    dropoutLayer(0.5)
+    fullyConnectedLayer(numClasses)
+    softmaxLayer
+    classificationLayer];
+options = trainingOptions("adam","MaxEpochs",150,"MiniBatchSize",64,"Shuffle","every-epoch","Plots","training-progress", ...
+    "InitialLearnRate",0.0001,"Verbose",true, ...
+    "VerboseFrequency",25,"ValidationData",{validation_data1,validation_label},"ValidationFrequency",25,"L2Regularization",0.01,...
+ "OutputNetwork","best-validation-loss");

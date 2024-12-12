@@ -1,0 +1,28 @@
+layers = [
+    sequenceInputLayer(inputSize)
+
+    convolution1dLayer(filterSize,numFilters,"Padding","same")
+    reluLayer
+    batchNormalizationLayer
+
+    convolution1dLayer(filterSize,2*numFilters,"Padding","same")
+    reluLayer
+    batchNormalizationLayer
+
+    convolution1dLayer(filterSize,4*numFilters,"Padding","same")
+    reluLayer
+    batchNormalizationLayer
+
+    convolution1dLayer(2*filterSize,8*numFilters,"Padding","causal")
+    reluLayer
+    batchNormalizationLayer
+
+    globalAveragePooling1dLayer
+    dropoutLayer(0.5)
+    fullyConnectedLayer(numClasses)
+    softmaxLayer
+    classificationLayer];
+options = trainingOptions("adam","MaxEpochs",150,"MiniBatchSize",128,"Shuffle","every-epoch","Plots","training-progress", ...
+    "InitialLearnRate",0.001,"Verbose",true, ...
+    "VerboseFrequency",25,"ValidationData",{validation_data,validation_label},"ValidationFrequency",25,"L2Regularization",0.0001,...
+ "OutputNetwork","best-validation-loss");
